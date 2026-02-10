@@ -1,0 +1,250 @@
+:root {
+  color-scheme: light;
+  --bg-top: #ffb3c7;
+  --bg-mid: #ffd1a6;
+  --bg-bottom: #ffe8f1;
+  --card: #fff6fb;
+  --ink: #4b2339;
+  --accent: #ff4d8d;
+  --accent-dark: #d62e6b;
+  --accent-alt: #ff8ab4;
+  --shadow: rgba(255, 77, 141, 0.25);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Quicksand", "Trebuchet MS", sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at top, var(--bg-top), transparent 60%),
+    linear-gradient(180deg, var(--bg-mid), var(--bg-bottom) 70%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 32px 18px 48px;
+}
+
+.page {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  z-index: 1;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 28px;
+  padding: 28px 24px 26px;
+  box-shadow: 0 18px 40px var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -60px auto auto -60px;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8), transparent 70%);
+  opacity: 0.7;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  color: var(--accent-dark);
+}
+
+h1 {
+  margin: 0 0 12px;
+  font-family: "Pacifico", "Brush Script MT", cursive;
+  font-size: clamp(1.9rem, 6vw, 2.5rem);
+  color: var(--accent);
+  line-height: 1.1;
+}
+
+.message {
+  margin: 0 0 12px;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.message.playful {
+  font-weight: 600;
+  color: #7b2e4a;
+}
+
+.cta {
+  display: grid;
+  gap: 12px;
+  margin: 18px 0 8px;
+}
+
+.btn {
+  border: none;
+  border-radius: 18px;
+  padding: 14px 18px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn.primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 12px 18px rgba(255, 77, 141, 0.35);
+}
+
+.btn.secondary {
+  background: #fff;
+  color: var(--accent-dark);
+  border: 2px solid rgba(214, 46, 107, 0.2);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255, 77, 141, 0.25);
+}
+
+.reply {
+  min-height: 24px;
+  margin: 10px 0 0;
+  font-weight: 700;
+  color: var(--accent-dark);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.reply.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sign {
+  margin: 16px 0 0;
+  font-weight: 700;
+  text-align: right;
+}
+
+.floating-shapes {
+  position: absolute;
+  inset: -20px 0 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.shape {
+  position: absolute;
+  opacity: 0.65;
+  animation: float 6s ease-in-out infinite;
+}
+
+.heart {
+  width: 48px;
+  height: 48px;
+  background: var(--accent-alt);
+  position: absolute;
+  transform: rotate(-45deg);
+  border-radius: 8px 8px 0 0;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  background: var(--accent-alt);
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -24px;
+  left: 0;
+}
+
+.heart::after {
+  left: 24px;
+  top: 0;
+}
+
+.sparkle {
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.h1 {
+  left: -6px;
+  top: 12px;
+  animation-delay: 0s;
+}
+
+.h2 {
+  right: -10px;
+  top: 80px;
+  animation-delay: 1s;
+}
+
+.h3 {
+  left: 30px;
+  bottom: -10px;
+  animation-delay: 2s;
+}
+
+.s1 {
+  right: 24px;
+  top: 20px;
+  animation-delay: 0.5s;
+}
+
+.s2 {
+  left: 18px;
+  top: 140px;
+  animation-delay: 1.2s;
+}
+
+.s3 {
+  right: 40px;
+  bottom: 40px;
+  animation-delay: 1.6s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(-45deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-45deg);
+  }
+  100% {
+    transform: translateY(0) rotate(-45deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shape,
+  .btn,
+  .reply {
+    animation: none;
+    transition: none;
+  }
+}

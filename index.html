@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Be My Valentine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <div class="floating-shapes" aria-hidden="true">
+        <span class="shape heart h1"></span>
+        <span class="shape heart h2"></span>
+        <span class="shape heart h3"></span>
+        <span class="shape sparkle s1"></span>
+        <span class="shape sparkle s2"></span>
+        <span class="shape sparkle s3"></span>
+      </div>
+
+      <section class="card" aria-labelledby="title">
+        <p class="eyebrow">Hey Anuja,</p>
+        <h1 id="title">Will you be my Valentine?</h1>
+        <p class="message">
+          I promise extra laughs, surprise snacks, and a million sweet moments with you.
+        </p>
+        <p class="message playful">P.S. You + me = my favorite love story.</p>
+
+        <div class="cta" role="group" aria-label="Valentine response">
+          <button class="btn primary" data-answer="Yes!">Yes!</button>
+          <button class="btn secondary" data-answer="Absolutely!">Absolutely!</button>
+        </div>
+
+        <p class="reply" aria-live="polite"> </p>
+        <p class="sign">— Omar</p>
+      </section>
+    </main>
+
+    <script>
+      const reply = document.querySelector('.reply');
+      const buttons = document.querySelectorAll('.btn');
+
+      buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const answer = button.dataset.answer || 'Yes!';
+          reply.textContent = `${answer} You just made my heart do a happy dance.`;
+          reply.classList.add('show');
+        });
+      });
+    </script>
+  </body>
+</html>
