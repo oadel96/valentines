@@ -22,6 +22,10 @@
         <span class="shape sparkle s2"></span>
         <span class="shape sparkle s3"></span>
       </div>
+      <div class="blobs" aria-hidden="true">
+        <span class="blob b1"></span>
+        <span class="blob b2"></span>
+      </div>
 
       <section class="card" aria-labelledby="title">
         <p class="eyebrow">Hey Anuja,</p>
@@ -30,10 +34,23 @@
           I promise extra laughs, surprise snacks, and a million sweet moments with you.
         </p>
         <p class="message playful">P.S. You + me = my favorite love story.</p>
+        <p class="hint">Tap a button and make the magic happen ✨</p>
 
         <div class="cta" role="group" aria-label="Valentine response">
-          <button class="btn primary" data-answer="Yes!">Yes!</button>
-          <button class="btn secondary" data-answer="Absolutely!">Absolutely!</button>
+          <button
+            class="btn primary"
+            data-answer="Yes!"
+            data-message="Yes! I accept your Valentine card! 💖"
+          >
+            Yes!
+          </button>
+          <button
+            class="btn secondary"
+            data-answer="Absolutely!"
+            data-message="Absolutely! You are my Valentine! 💕"
+          >
+            Absolutely!
+          </button>
         </div>
 
         <p class="reply" aria-live="polite"> </p>
@@ -44,12 +61,43 @@
     <script>
       const reply = document.querySelector('.reply');
       const buttons = document.querySelectorAll('.btn');
+      const page = document.querySelector('.page');
+      const whatsappNumber = '+201234567890';
+
+      const launchHearts = (origin) => {
+        const burst = document.createElement('div');
+        burst.className = 'burst';
+        page.appendChild(burst);
+        const { left, top, width } = origin.getBoundingClientRect();
+        const baseX = left + width / 2;
+        const baseY = top;
+
+        for (let i = 0; i < 12; i += 1) {
+          const heart = document.createElement('span');
+          heart.className = 'burst-heart';
+          const angle = Math.random() * Math.PI * 2;
+          const radius = 40 + Math.random() * 40;
+          heart.style.left = `${baseX}px`;
+          heart.style.top = `${baseY}px`;
+          heart.style.setProperty('--dx', `${Math.cos(angle) * radius}px`);
+          heart.style.setProperty('--dy', `${Math.sin(angle) * radius - 60}px`);
+          burst.appendChild(heart);
+        }
+
+        setTimeout(() => burst.remove(), 900);
+      };
 
       buttons.forEach((button) => {
         button.addEventListener('click', () => {
           const answer = button.dataset.answer || 'Yes!';
-          reply.textContent = `${answer} You just made my heart do a happy dance.`;
+          const message =
+            button.dataset.message ||
+            'Yes! I accept your Valentine card! 💖';
+          reply.textContent = `${answer} My Valentine card just got a happy yes.`;
           reply.classList.add('show');
+          launchHearts(button);
+          const url = `https://wa.me/${whatsappNumber.replace('+', '')}?text=${encodeURIComponent(message)}`;
+          window.open(url, '_blank', 'noopener,noreferrer');
         });
       });
     </script>
