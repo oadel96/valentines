@@ -186,8 +186,9 @@ h1 {
 
 .floating-shapes {
   position: absolute;
+  inset: 0 0 0;
   pointer-events: none;
-  z-index: 99999;
+  z-index: 9999;
 }
 
 .shape {
@@ -228,7 +229,7 @@ h1 {
 .sparkle {
   width: 14px;
   height: 14px;
-  background: #fff;
+  background: #ffd1a6;
   border-radius: 4px;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
